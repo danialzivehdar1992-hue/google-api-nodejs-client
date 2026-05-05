@@ -422,7 +422,7 @@ export namespace accesscontextmanager_v1 {
    */
   export interface Schema$EgressFrom {
     /**
-     * A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For third-party identity, only single identities are supported and other identity types are not supported. The `v1` identities that have the prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+     * A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
      */
     identities?: string[] | null;
     /**
@@ -574,7 +574,7 @@ export namespace accesscontextmanager_v1 {
    */
   export interface Schema$IngressFrom {
     /**
-     * A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, or third-party identity. For third-party identity, only single identities are supported and other identity types are not supported. The `v1` identities that have the prefix `user`, `group`, `serviceAccount`, and `principal` in https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
+     * A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities.
      */
     identities?: string[] | null;
     /**
@@ -720,11 +720,11 @@ export namespace accesscontextmanager_v1 {
    */
   export interface Schema$ListSupportedPermissionsResponse {
     /**
-     * The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+     * Use this pagination token to retrieve the next page of results. An empty value indicates that no further results are available.
      */
     nextPageToken?: string | null;
     /**
-     * List of VPC-SC supported permissions.
+     * List of VPC Service Controls supported permissions.
      */
     supportedPermissions?: string[] | null;
   }
@@ -733,7 +733,7 @@ export namespace accesscontextmanager_v1 {
    */
   export interface Schema$ListSupportedServicesResponse {
     /**
-     * The pagination token to retrieve the next page of results. If the value is empty, no further results remain.
+     * Use this pagination token to retrieve the next page of results. An empty value indicates that no further results are available.
      */
     nextPageToken?: string | null;
     /**
@@ -5193,7 +5193,7 @@ export namespace accesscontextmanager_v1 {
     }
 
     /**
-     * Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacement are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
+     * Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacements are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
      * @example
      * ```js
      * // Before running the sample:
@@ -7032,7 +7032,7 @@ export namespace accesscontextmanager_v1 {
     }
 
     /**
-     * Lists all supported permissions in VPCSC Granular Controls.
+     * Lists all supported permissions in VPC Service Controls ingress and egress rules for Granular Controls.
      * @example
      * ```js
      * // Before running the sample:
@@ -7062,9 +7062,9 @@ export namespace accesscontextmanager_v1 {
      *
      *   // Do the magic
      *   const res = await accesscontextmanager.permissions.list({
-     *     // Optional. This flag specifies the maximum number of services to return per page. Default is 100.
+     *     // Optional. This flag specifies the maximum number of services to return per page. Default value is 100.
      *     pageSize: 'placeholder-value',
-     *     // Optional. Token to start on a later page. Default is the first page.
+     *     // Optional. Use this token to retrieve a specific page of results. Default is the first page.
      *     pageToken: 'placeholder-value',
      *   });
      *   console.log(res.data);
@@ -7181,11 +7181,11 @@ export namespace accesscontextmanager_v1 {
 
   export interface Params$Resource$Permissions$List extends StandardParameters {
     /**
-     * Optional. This flag specifies the maximum number of services to return per page. Default is 100.
+     * Optional. This flag specifies the maximum number of services to return per page. Default value is 100.
      */
     pageSize?: number;
     /**
-     * Optional. Token to start on a later page. Default is the first page.
+     * Optional. Use this token to retrieve a specific page of results. Default is the first page.
      */
     pageToken?: string;
   }
@@ -7370,9 +7370,9 @@ export namespace accesscontextmanager_v1 {
      *
      *   // Do the magic
      *   const res = await accesscontextmanager.services.list({
-     *     // This flag specifies the maximum number of services to return per page. Default is 100.
+     *     // This flag specifies the maximum number of services to return per page. Default value is 100.
      *     pageSize: 'placeholder-value',
-     *     // Token to start on a later page. Default is the first page.
+     *     // Use this token to retrieve a specific page of results. Default is the first page.
      *     pageToken: 'placeholder-value',
      *   });
      *   console.log(res.data);
@@ -7491,11 +7491,11 @@ export namespace accesscontextmanager_v1 {
   }
   export interface Params$Resource$Services$List extends StandardParameters {
     /**
-     * This flag specifies the maximum number of services to return per page. Default is 100.
+     * This flag specifies the maximum number of services to return per page. Default value is 100.
      */
     pageSize?: number;
     /**
-     * Token to start on a later page. Default is the first page.
+     * Use this token to retrieve a specific page of results. Default is the first page.
      */
     pageToken?: string;
   }
