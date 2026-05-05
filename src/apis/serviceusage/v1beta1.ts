@@ -408,7 +408,7 @@ export namespace serviceusage_v1beta1 {
      */
     overridesByRequestProtocol?: {[key: string]: Schema$BackendRule} | null;
     /**
-     * no-lint
+     * Path translation specifies how to combine the backend address with the request path in order to produce the appropriate forwarding URL for the request. See PathTranslation for more details.
      */
     pathTranslation?: string | null;
     /**
@@ -611,7 +611,7 @@ export namespace serviceusage_v1beta1 {
      */
     referenceDocsUri?: string | null;
     /**
-     * Configuration for which RPCs should be generated in the GAPIC client.
+     * Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases.
      */
     selectiveGapicGeneration?: Schema$SelectiveGapicGeneration;
   }
@@ -1195,7 +1195,7 @@ export namespace serviceusage_v1beta1 {
      */
     documentation?: Schema$Documentation;
     /**
-     * Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list disables the automatic generation of default endpoint variations (e.g., `{service\}.clients6.google.com`, `content-{service\}.googleapis.com`, and mTLS variants like `{service\}.mtls.googleapis.com`). To retain these default variations, you are required to explicitly include your main service endpoint (e.g., `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.).
+     * Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
      */
     endpoints?: Schema$Endpoint[];
     /**
@@ -1917,49 +1917,6 @@ export namespace serviceusage_v1beta1 {
     totalPollTimeout?: string | null;
   }
   /**
-   * McpEnableRule contains MCP enablement related rules.
-   */
-  export interface Schema$McpEnableRule {
-    /**
-     * List of enabled MCP services.
-     */
-    mcpServices?: Schema$McpService[];
-  }
-  /**
-   * MCP Consumer Policy is a set of rules that define MCP related policy for a cloud resource hierarchy.
-   */
-  export interface Schema$McpPolicy {
-    /**
-     * Output only. The time the policy was created. For singleton policies (such as the `default` policy), this is the first touch of the policy.
-     */
-    createTime?: string | null;
-    /**
-     * An opaque tag indicating the current version of the policy, used for concurrency control.
-     */
-    etag?: string | null;
-    /**
-     * McpEnableRules contains MCP enablement related rules.
-     */
-    mcpEnableRules?: Schema$McpEnableRule[];
-    /**
-     * Output only. The resource name of the policy. Only the `default` policy is supported. We allow the following formats: `projects/{PROJECT_NUMBER\}/mcpPolicies/default`, `projects/{PROJECT_ID\}/mcpPolicies/default`, `folders/{FOLDER_ID\}/mcpPolicies/default`, `organizations/{ORG_ID\}/mcpPolicies/default`.
-     */
-    name?: string | null;
-    /**
-     * Output only. The time the policy was last updated.
-     */
-    updateTime?: string | null;
-  }
-  /**
-   * McpService contains the service names that are enabled for MCP.
-   */
-  export interface Schema$McpService {
-    /**
-     * The names of the services that are enabled for MCP. Example: `services/library-example.googleapis.com`
-     */
-    service?: string | null;
-  }
-  /**
    * Method represents a method of an API interface. New usages of this message as an alternative to MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information.
    */
   export interface Schema$Method {
@@ -2536,7 +2493,7 @@ export namespace serviceusage_v1beta1 {
     common?: Schema$CommonLanguageSettings;
   }
   /**
-   * This message is used to configure the generation of a subset of the RPCs in a service for client libraries.
+   * This message is used to configure the generation of a subset of the RPCs in a service for client libraries. Note: This feature should not be used in most cases.
    */
   export interface Schema$SelectiveGapicGeneration {
     /**
@@ -2747,10 +2704,6 @@ export namespace serviceusage_v1beta1 {
    */
   export interface Schema$UpdateContentSecurityPolicyMetadata {}
   /**
-   * Metadata for the `UpdateMcpPolicy` method.
-   */
-  export interface Schema$UpdateMcpPolicyMetadata {}
-  /**
    * Configuration controlling usage of a service.
    */
   export interface Schema$Usage {
@@ -2772,7 +2725,7 @@ export namespace serviceusage_v1beta1 {
    */
   export interface Schema$UsageRule {
     /**
-     *  Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.
+     * Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.
      */
     allowUnregisteredCalls?: boolean | null;
     /**
