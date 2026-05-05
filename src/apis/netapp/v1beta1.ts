@@ -266,7 +266,7 @@ export namespace netapp_v1beta1 {
      */
     sourceSnapshot?: string | null;
     /**
-     * Volume full name of this backup belongs to. Format: `projects/{projects_id\}/locations/{location\}/volumes/{volume_id\}`
+     * Volume full name of this backup belongs to. Either source_volume or ontap_source should be provided. Format: `projects/{projects_id\}/locations/{location\}/volumes/{volume_id\}`
      */
     sourceVolume?: string | null;
     /**
@@ -397,6 +397,10 @@ export namespace netapp_v1beta1 {
      * Output only. Create time of the backup vault.
      */
     createTime?: string | null;
+    /**
+     * Optional. Indicates if the backup vault is a cross project vault.
+     */
+    crossProjectVault?: boolean | null;
     /**
      * Description of the backup vault.
      */
@@ -896,7 +900,7 @@ export namespace netapp_v1beta1 {
     stateDetails?: string | null;
   }
   /**
-   * Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 12 TiB to 20 PiB, it is composed of multiple internal constituents, and must be created in a large capacity pool.
+   * Configuration for a Large Capacity Volume. A Large Capacity Volume supports sizes ranging from 4.8 TiB to 20 PiB, it is composed of multiple internal constituents, and must be created in a large capacity pool.
    */
   export interface Schema$LargeCapacityConfig {
     /**
@@ -1411,7 +1415,7 @@ export namespace netapp_v1beta1 {
    */
   export interface Schema$RestoreParameters {
     /**
-     * Full name of the backup resource. Format: projects/{project\}/locations/{location\}/backupVaults/{backup_vault_id\}/backups/{backup_id\}
+     * Full name of the backup resource. Format for standard backup: projects/{project\}/locations/{location\}/backupVaults/{backup_vault_id\}/backups/{backup_id\} Format for BackupDR backup: projects/{project\}/locations/{location\}/backupVaults/{backup_vault\}/dataSources/{data_source\}/backups/{backup\}
      */
     sourceBackup?: string | null;
     /**
@@ -1678,9 +1682,13 @@ export namespace netapp_v1beta1 {
      */
     satisfiesPzs?: boolean | null;
     /**
-     * Optional. The effective scale tier of the storage pool. If `scale_tier` is not specified during creation, this defaults to `SCALE_TIER_STANDARD`.
+     * Optional. Deprecated: Use scale_type instead. The effective scale tier of the storage pool. If `scale_tier` is not specified during creation, this defaults to `SCALE_TIER_STANDARD`.
      */
     scaleTier?: string | null;
+    /**
+     * Optional. The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
+     */
+    scaleType?: string | null;
     /**
      * Required. Service level of the storage pool
      */
@@ -1702,7 +1710,7 @@ export namespace netapp_v1beta1 {
      */
     totalThroughputMibps?: string | null;
     /**
-     * Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with large capacity. If not specified during creation, it defaults to `FILE`.
+     * Optional. Type of the storage pool. This field is used to control whether the pool supports `FILE` based volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes. If not specified during creation, it defaults to `FILE`.
      */
     type?: string | null;
     /**
@@ -1892,11 +1900,11 @@ export namespace netapp_v1beta1 {
      */
     labels?: {[key: string]: string} | null;
     /**
-     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume. This field is used for legacy FILE pools. For Unified pools, use the `large_capacity_config` field instead. This field and `large_capacity_config` are mutually exclusive.
      */
     largeCapacity?: boolean | null;
     /**
-     * Optional. Large capacity config for the volume.
+     * Optional. Large capacity config for the volume. Enables and configures large capacity for volumes in Unified pools with File protocols. Not applicable for Block protocols in Unified pools. This field and the legacy `large_capacity` boolean field are mutually exclusive.
      */
     largeCapacityConfig?: Schema$LargeCapacityConfig;
     /**
@@ -2205,7 +2213,7 @@ export namespace netapp_v1beta1 {
     }
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id\}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project\}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @example
      * ```js
      * // Before running the sample:
@@ -2235,7 +2243,7 @@ export namespace netapp_v1beta1 {
      *
      *   // Do the magic
      *   const res = await netapp.projects.locations.list({
-     *     // Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     *     // Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      *     extraLocationTypes: 'placeholder-value',
      *     // A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      *     filter: 'placeholder-value',
@@ -2361,7 +2369,7 @@ export namespace netapp_v1beta1 {
   }
   export interface Params$Resource$Projects$Locations$List extends StandardParameters {
     /**
-     * Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      */
     extraLocationTypes?: string[];
     /**
@@ -4121,6 +4129,7 @@ export namespace netapp_v1beta1 {
      *       //   "backupVaultType": "my_backupVaultType",
      *       //   "backupsCryptoKeyVersion": "my_backupsCryptoKeyVersion",
      *       //   "createTime": "my_createTime",
+     *       //   "crossProjectVault": false,
      *       //   "description": "my_description",
      *       //   "destinationBackupVault": "my_destinationBackupVault",
      *       //   "encryptionState": "my_encryptionState",
@@ -4421,6 +4430,7 @@ export namespace netapp_v1beta1 {
      *   //   "backupVaultType": "my_backupVaultType",
      *   //   "backupsCryptoKeyVersion": "my_backupsCryptoKeyVersion",
      *   //   "createTime": "my_createTime",
+     *   //   "crossProjectVault": false,
      *   //   "description": "my_description",
      *   //   "destinationBackupVault": "my_destinationBackupVault",
      *   //   "encryptionState": "my_encryptionState",
@@ -4719,6 +4729,7 @@ export namespace netapp_v1beta1 {
      *       //   "backupVaultType": "my_backupVaultType",
      *       //   "backupsCryptoKeyVersion": "my_backupsCryptoKeyVersion",
      *       //   "createTime": "my_createTime",
+     *       //   "crossProjectVault": false,
      *       //   "description": "my_description",
      *       //   "destinationBackupVault": "my_destinationBackupVault",
      *       //   "encryptionState": "my_encryptionState",
@@ -8375,6 +8386,7 @@ export namespace netapp_v1beta1 {
      *       //   "satisfiesPzi": false,
      *       //   "satisfiesPzs": false,
      *       //   "scaleTier": "my_scaleTier",
+     *       //   "scaleType": "my_scaleType",
      *       //   "serviceLevel": "my_serviceLevel",
      *       //   "state": "my_state",
      *       //   "stateDetails": "my_stateDetails",
@@ -8695,6 +8707,7 @@ export namespace netapp_v1beta1 {
      *   //   "satisfiesPzi": false,
      *   //   "satisfiesPzs": false,
      *   //   "scaleTier": "my_scaleTier",
+     *   //   "scaleType": "my_scaleType",
      *   //   "serviceLevel": "my_serviceLevel",
      *   //   "state": "my_state",
      *   //   "stateDetails": "my_stateDetails",
@@ -9013,6 +9026,7 @@ export namespace netapp_v1beta1 {
      *       //   "satisfiesPzi": false,
      *       //   "satisfiesPzs": false,
      *       //   "scaleTier": "my_scaleTier",
+     *       //   "scaleType": "my_scaleType",
      *       //   "serviceLevel": "my_serviceLevel",
      *       //   "state": "my_state",
      *       //   "stateDetails": "my_stateDetails",
