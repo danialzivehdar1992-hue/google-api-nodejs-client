@@ -386,7 +386,7 @@ export namespace servicenetworking_v1beta {
      */
     overridesByRequestProtocol?: {[key: string]: Schema$BackendRule} | null;
     /**
-     * no-lint
+     * Path translation specifies how to combine the backend address with the request path in order to produce the appropriate forwarding URL for the request. See PathTranslation for more details.
      */
     pathTranslation?: string | null;
     /**
@@ -570,7 +570,7 @@ export namespace servicenetworking_v1beta {
      */
     referenceDocsUri?: string | null;
     /**
-     * Configuration for which RPCs should be generated in the GAPIC client.
+     * Configuration for which RPCs should be generated in the GAPIC client. Note: This field should not be used in most cases.
      */
     selectiveGapicGeneration?: Schema$SelectiveGapicGeneration;
   }
@@ -1837,7 +1837,7 @@ export namespace servicenetworking_v1beta {
     rangeName?: string | null;
   }
   /**
-   * This message is used to configure the generation of a subset of the RPCs in a service for client libraries.
+   * This message is used to configure the generation of a subset of the RPCs in a service for client libraries. Note: This feature should not be used in most cases.
    */
   export interface Schema$SelectiveGapicGeneration {
     /**
@@ -1894,7 +1894,7 @@ export namespace servicenetworking_v1beta {
      */
     documentation?: Schema$Documentation;
     /**
-     * Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs. WARNING: Defining any entries in the `endpoints` list disables the automatic generation of default endpoint variations (e.g., `{service\}.clients6.google.com`, `content-{service\}.googleapis.com`, and mTLS variants like `{service\}.mtls.googleapis.com`). To retain these default variations, you are required to explicitly include your main service endpoint (e.g., `myservice.googleapis.com`) in this list alongside any other custom endpoints (like REP, GFE, etc.).
+     * Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
      */
     endpoints?: Schema$Endpoint[];
     /**
@@ -2132,7 +2132,7 @@ export namespace servicenetworking_v1beta {
    */
   export interface Schema$UsageRule {
     /**
-     *  Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.
+     * Use this rule to configure unregistered calls for the service. Unregistered calls are calls that do not contain consumer project identity. (Example: calls that do not contain an API key). WARNING: By default, API methods do not allow unregistered calls, and each method call must be identified by a consumer project identity.
      */
     allowUnregisteredCalls?: boolean | null;
     /**
