@@ -434,7 +434,7 @@ export namespace analyticsadmin_v1alpha {
      */
     gmpOrganization?: string | null;
     /**
-     * Output only. Resource name of this account. Format: accounts/{account\} Example: "accounts/100"
+     * Identifier. Resource name of this account. Format: accounts/{account\} Example: "accounts/100"
      */
     name?: string | null;
     /**
@@ -459,7 +459,7 @@ export namespace analyticsadmin_v1alpha {
      */
     displayName?: string | null;
     /**
-     * Resource name for this account summary. Format: accountSummaries/{account_id\} Example: "accountSummaries/1000"
+     * Identifier. Resource name for this account summary. Format: accountSummaries/{account_id\} Example: "accountSummaries/1000"
      */
     name?: string | null;
     /**
@@ -942,7 +942,7 @@ export namespace analyticsadmin_v1alpha {
      */
     metricUnit?: string | null;
     /**
-     * Output only. Resource name for this CalculatedMetric. Format: 'properties/{property_id\}/calculatedMetrics/{calculated_metric_id\}'
+     * Identifier. Resource name for this CalculatedMetric. Format: 'properties/{property_id\}/calculatedMetrics/{calculated_metric_id\}'
      */
     name?: string | null;
     /**
@@ -1095,6 +1095,10 @@ export namespace analyticsadmin_v1alpha {
      * A snapshot of a SubpropertySyncConfig resource in change history.
      */
     subpropertySyncConfig?: Schema$GoogleAnalyticsAdminV1alphaSubpropertySyncConfig;
+    /**
+     * A snapshot of a UserProvidedDataSettings resource in change history.
+     */
+    userProvidedDataSettings?: Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings;
   }
   /**
    * A set of changes within a Google Analytics account or its child properties that resulted from the same cause. Common causes would be updates made in the Google Analytics UI, changes from customer support, or automatic Google Analytics system changes.
@@ -1252,7 +1256,7 @@ export namespace analyticsadmin_v1alpha {
      */
     eventName?: string | null;
     /**
-     * Output only. Resource name of this conversion event. Format: properties/{property\}/conversionEvents/{conversion_event\}
+     * Identifier. Resource name of this conversion event. Format: properties/{property\}/conversionEvents/{conversion_event\}
      */
     name?: string | null;
   }
@@ -1350,7 +1354,7 @@ export namespace analyticsadmin_v1alpha {
      */
     displayName?: string | null;
     /**
-     * Output only. Resource name for this CustomDimension resource. Format: properties/{property\}/customDimensions/{customDimension\}
+     * Identifier. Resource name for this CustomDimension resource. Format: properties/{property\}/customDimensions/{customDimension\}
      */
     name?: string | null;
     /**
@@ -1379,7 +1383,7 @@ export namespace analyticsadmin_v1alpha {
      */
     measurementUnit?: string | null;
     /**
-     * Output only. Resource name for this CustomMetric resource. Format: properties/{property\}/customMetrics/{customMetric\}
+     * Identifier. Resource name for this CustomMetric resource. Format: properties/{property\}/customMetrics/{customMetric\}
      */
     name?: string | null;
     /**
@@ -1425,7 +1429,7 @@ export namespace analyticsadmin_v1alpha {
      */
     eventDataRetention?: string | null;
     /**
-     * Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property\}/dataRetentionSettings
+     * Identifier. Resource name for this DataRetentionSetting resource. Format: properties/{property\}/dataRetentionSettings
      */
     name?: string | null;
     /**
@@ -1442,7 +1446,7 @@ export namespace analyticsadmin_v1alpha {
    */
   export interface Schema$GoogleAnalyticsAdminV1alphaDataSharingSettings {
     /**
-     * Output only. Resource name. Format: accounts/{account\}/dataSharingSettings Example: "accounts/1000/dataSharingSettings"
+     * Identifier. Resource name. Format: accounts/{account\}/dataSharingSettings Example: "accounts/1000/dataSharingSettings"
      */
     name?: string | null;
     /**
@@ -1487,7 +1491,7 @@ export namespace analyticsadmin_v1alpha {
      */
     iosAppStreamData?: Schema$GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData;
     /**
-     * Output only. Resource name of this Data Stream. Format: properties/{property_id\}/dataStreams/{stream_id\} Example: "properties/1000/dataStreams/2000"
+     * Identifier. Resource name of this Data Stream. Format: properties/{property_id\}/dataStreams/{stream_id\} Example: "properties/1000/dataStreams/2000"
      */
     name?: string | null;
     /**
@@ -1580,7 +1584,7 @@ export namespace analyticsadmin_v1alpha {
      */
     costDataSharingEnabled?: boolean | null;
     /**
-     * Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinks/{linkId\} Note: linkId is not the Display & Video 360 Advertiser ID
+     * Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinks/{linkId\} Note: linkId is not the Display & Video 360 Advertiser ID
      */
     name?: string | null;
   }
@@ -1613,7 +1617,7 @@ export namespace analyticsadmin_v1alpha {
      */
     linkProposalStatusDetails?: Schema$GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails;
     /**
-     * Output only. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinkProposals/{proposalId\} Note: proposalId is not the Display & Video 360 Advertiser ID
+     * Identifier. The resource name for this DisplayVideo360AdvertiserLinkProposal resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinkProposals/{proposalId\} Note: proposalId is not the Display & Video 360 Advertiser ID
      */
     name?: string | null;
     /**
@@ -1860,7 +1864,7 @@ export namespace analyticsadmin_v1alpha {
      */
     createTime?: string | null;
     /**
-     * Output only. Example format: properties/1234/firebaseLinks/5678
+     * Identifier. Example format: properties/1234/firebaseLinks/5678
      */
     name?: string | null;
     /**
@@ -1873,7 +1877,7 @@ export namespace analyticsadmin_v1alpha {
    */
   export interface Schema$GoogleAnalyticsAdminV1alphaGlobalSiteTag {
     /**
-     * Output only. Resource name for this GlobalSiteTag resource. Format: properties/{property_id\}/dataStreams/{stream_id\}/globalSiteTag Example: "properties/123/dataStreams/456/globalSiteTag"
+     * Identifier. Resource name for this GlobalSiteTag resource. Format: properties/{property_id\}/dataStreams/{stream_id\}/globalSiteTag Example: "properties/123/dataStreams/456/globalSiteTag"
      */
     name?: string | null;
     /**
@@ -1906,7 +1910,7 @@ export namespace analyticsadmin_v1alpha {
      */
     customerId?: string | null;
     /**
-     * Output only. Format: properties/{propertyId\}/googleAdsLinks/{googleAdsLinkId\} Note: googleAdsLinkId is not the Google Ads customer ID.
+     * Identifier. Format: properties/{propertyId\}/googleAdsLinks/{googleAdsLinkId\} Note: googleAdsLinkId is not the Google Ads customer ID.
      */
     name?: string | null;
     /**
@@ -2401,7 +2405,7 @@ export namespace analyticsadmin_v1alpha {
      */
     displayName?: string | null;
     /**
-     * Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets/{measurementProtocolSecret\}
+     * Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets/{measurementProtocolSecret\}
      */
     name?: string | null;
     /**
@@ -2481,7 +2485,7 @@ export namespace analyticsadmin_v1alpha {
      */
     industryCategory?: string | null;
     /**
-     * Output only. Resource name of this property. Format: properties/{property_id\} Example: "properties/1000"
+     * Identifier. Resource name of this property. Format: properties/{property_id\} Example: "properties/1000"
      */
     name?: string | null;
     /**
@@ -2762,7 +2766,7 @@ export namespace analyticsadmin_v1alpha {
      */
     costDataSharingEnabled?: boolean | null;
     /**
-     * Output only. The resource name for this SearchAds360Link resource. Format: properties/{propertyId\}/searchAds360Links/{linkId\} Note: linkId is not the Search Ads 360 advertiser ID
+     * Identifier. The resource name for this SearchAds360Link resource. Format: properties/{propertyId\}/searchAds360Links/{linkId\} Note: linkId is not the Search Ads 360 advertiser ID
      */
     name?: string | null;
     /**
@@ -2829,7 +2833,7 @@ export namespace analyticsadmin_v1alpha {
      */
     applyConversionValues?: boolean | null;
     /**
-     * Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property\}/dataStreams/{dataStream\}/sKAdNetworkConversionValueSchema
+     * Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property\}/dataStreams/{dataStream\}/sKAdNetworkConversionValueSchema
      */
     name?: string | null;
     /**
@@ -2990,6 +2994,23 @@ export namespace analyticsadmin_v1alpha {
      * Required. The access binding to update.
      */
     accessBinding?: Schema$GoogleAnalyticsAdminV1alphaAccessBinding;
+  }
+  /**
+   * Configuration for user-provided data collection. This is a singleton resource for a Google Analytics property.
+   */
+  export interface Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings {
+    /**
+     * Optional. Whether this property allows a Google Tag to automatically collect user-provided data from your website. This setting only takes effect if `user_provided_data_collection_enabled` is also true.
+     */
+    automaticallyDetectedDataCollectionEnabled?: boolean | null;
+    /**
+     * Identifier. Resource name of this setting. Format: properties/{property\}/userProvidedDataSettings Example: "properties/1000/userProvidedDataSettings"
+     */
+    name?: string | null;
+    /**
+     * Optional. Whether this property accepts user-provided data sent to it.
+     */
+    userProvidedDataCollectionEnabled?: boolean | null;
   }
   /**
    * A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); \}
@@ -3493,9 +3514,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.accounts.list({
-     *     // The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *     // Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Whether to include soft-deleted (ie: "trashed") Accounts in the results. Accounts can be inspected to determine whether they are deleted or not.
      *     showDeleted: 'placeholder-value',
@@ -3642,7 +3663,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.accounts.patch({
-     *     // Output only. Resource name of this account. Format: accounts/{account\} Example: "accounts/100"
+     *     // Identifier. Resource name of this account. Format: accounts/{account\} Example: "accounts/100"
      *     name: 'accounts/my-account',
      *     // Required. The list of fields to be updated. Field names must be in snake case (for example, "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -4289,11 +4310,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Accounts$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -4303,7 +4324,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Accounts$Patch extends StandardParameters {
     /**
-     * Output only. Resource name of this account. Format: accounts/{account\} Example: "accounts/100"
+     * Identifier. Resource name of this account. Format: accounts/{account\} Example: "accounts/100"
      */
     name?: string;
     /**
@@ -5847,9 +5868,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.accountSummaries.list({
-     *     // The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *     // Optional. The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *   });
      *   console.log(res.data);
@@ -5970,11 +5991,11 @@ export namespace analyticsadmin_v1alpha {
 
   export interface Params$Resource$Accountsummaries$List extends StandardParameters {
     /**
-     * The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of AccountSummary resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListAccountSummaries` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountSummaries` must match the call that provided the page token.
      */
     pageToken?: string;
   }
@@ -7453,6 +7474,156 @@ export namespace analyticsadmin_v1alpha {
     }
 
     /**
+     * Looks up settings related to user-provided data for a property.
+     * @example
+     * ```js
+     * // Before running the sample:
+     * // - Enable the API at:
+     * //   https://console.developers.google.com/apis/api/analyticsadmin.googleapis.com
+     * // - Login into gcloud by running:
+     * //   ```sh
+     * //   $ gcloud auth application-default login
+     * //   ```
+     * // - Install the npm module by running:
+     * //   ```sh
+     * //   $ npm install googleapis
+     * //   ```
+     *
+     * const {google} = require('googleapis');
+     * const analyticsadmin = google.analyticsadmin('v1alpha');
+     *
+     * async function main() {
+     *   const auth = new google.auth.GoogleAuth({
+     *     // Scopes can be specified either as an array or as a single, space-delimited string.
+     *     scopes: [
+     *       'https://www.googleapis.com/auth/analytics.edit',
+     *       'https://www.googleapis.com/auth/analytics.readonly',
+     *     ],
+     *   });
+     *
+     *   // Acquire an auth client, and bind it to all future calls
+     *   const authClient = await auth.getClient();
+     *   google.options({auth: authClient});
+     *
+     *   // Do the magic
+     *   const res = await analyticsadmin.properties.getUserProvidedDataSettings({
+     *     // Required. The name of the user provided data settings to retrieve. Format: properties/{property\}/userProvidedDataSettings
+     *     name: 'properties/my-propertie/userProvidedDataSettings',
+     *   });
+     *   console.log(res.data);
+     *
+     *   // Example response
+     *   // {
+     *   //   "automaticallyDetectedDataCollectionEnabled": false,
+     *   //   "name": "my_name",
+     *   //   "userProvidedDataCollectionEnabled": false
+     *   // }
+     * }
+     *
+     * main().catch(e => {
+     *   console.error(e);
+     *   throw e;
+     * });
+     *
+     * ```
+     *
+     * @param params - Parameters for request
+     * @param options - Optionally override request options, such as `url`, `method`, and `encoding`.
+     * @param callback - Optional callback that handles the response.
+     * @returns A promise if used with async/await, or void if used with a callback.
+     */
+    getUserProvidedDataSettings(
+      params: Params$Resource$Properties$Getuserprovideddatasettings,
+      options: StreamMethodOptions
+    ): Promise<GaxiosResponseWithHTTP2<Readable>>;
+    getUserProvidedDataSettings(
+      params?: Params$Resource$Properties$Getuserprovideddatasettings,
+      options?: MethodOptions
+    ): Promise<
+      GaxiosResponseWithHTTP2<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+    >;
+    getUserProvidedDataSettings(
+      params: Params$Resource$Properties$Getuserprovideddatasettings,
+      options: StreamMethodOptions | BodyResponseCallback<Readable>,
+      callback: BodyResponseCallback<Readable>
+    ): void;
+    getUserProvidedDataSettings(
+      params: Params$Resource$Properties$Getuserprovideddatasettings,
+      options:
+        | MethodOptions
+        | BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>,
+      callback: BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+    ): void;
+    getUserProvidedDataSettings(
+      params: Params$Resource$Properties$Getuserprovideddatasettings,
+      callback: BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+    ): void;
+    getUserProvidedDataSettings(
+      callback: BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+    ): void;
+    getUserProvidedDataSettings(
+      paramsOrCallback?:
+        | Params$Resource$Properties$Getuserprovideddatasettings
+        | BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+        | BodyResponseCallback<Readable>,
+      optionsOrCallback?:
+        | MethodOptions
+        | StreamMethodOptions
+        | BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+        | BodyResponseCallback<Readable>,
+      callback?:
+        | BodyResponseCallback<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+        | BodyResponseCallback<Readable>
+    ):
+      | void
+      | Promise<
+          GaxiosResponseWithHTTP2<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>
+        >
+      | Promise<GaxiosResponseWithHTTP2<Readable>> {
+      let params = (paramsOrCallback ||
+        {}) as Params$Resource$Properties$Getuserprovideddatasettings;
+      let options = (optionsOrCallback || {}) as MethodOptions;
+
+      if (typeof paramsOrCallback === 'function') {
+        callback = paramsOrCallback;
+        params = {} as Params$Resource$Properties$Getuserprovideddatasettings;
+        options = {};
+      }
+
+      if (typeof optionsOrCallback === 'function') {
+        callback = optionsOrCallback;
+        options = {};
+      }
+
+      const rootUrl =
+        options.rootUrl || 'https://analyticsadmin.googleapis.com/';
+      const parameters = {
+        options: Object.assign(
+          {
+            url: (rootUrl + '/v1alpha/{+name}').replace(/([^:]\/)\/+/g, '$1'),
+            method: 'GET',
+            apiVersion: '',
+          },
+          options
+        ),
+        params,
+        requiredParams: ['name'],
+        pathParams: ['name'],
+        context: this.context,
+      };
+      if (callback) {
+        createAPIRequest<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>(
+          parameters,
+          callback as BodyResponseCallback<unknown>
+        );
+      } else {
+        return createAPIRequest<Schema$GoogleAnalyticsAdminV1alphaUserProvidedDataSettings>(
+          parameters
+        );
+      }
+    }
+
+    /**
      * Returns child Properties under the specified parent Account. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if no relevant properties are found.
      * @example
      * ```js
@@ -7488,9 +7659,9 @@ export namespace analyticsadmin_v1alpha {
      *   const res = await analyticsadmin.properties.list({
      *     // Required. An expression for filtering the results of the request. Fields eligible for filtering are: `parent:`(The resource name of the parent account/property) or `ancestor:`(The resource name of the parent account) or `firebase_project:`(The id or number of the linked firebase project). Some examples of filters: ``` | Filter | Description | |-----------------------------|-------------------------------------------| | parent:accounts/123 | The account with account id: 123. | | parent:properties/123 | The property with property id: 123. | | ancestor:accounts/123 | The account with account id: 123. | | firebase_project:project-id | The firebase project with id: project-id. | | firebase_project:123 | The firebase project with number: 123. | ```
      *     filter: 'placeholder-value',
-     *     // The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *     // Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Whether to include soft-deleted (ie: "trashed") Properties in the results. Properties can be inspected to determine whether they are deleted or not.
      *     showDeleted: 'placeholder-value',
@@ -7640,7 +7811,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.patch({
-     *     // Output only. Resource name of this property. Format: properties/{property_id\} Example: "properties/1000"
+     *     // Identifier. Resource name of this property. Format: properties/{property_id\} Example: "properties/1000"
      *     name: 'properties/my-propertie',
      *     // Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -8470,7 +8641,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.updateDataRetentionSettings({
-     *     // Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property\}/dataRetentionSettings
+     *     // Identifier. Resource name for this DataRetentionSetting resource. Format: properties/{property\}/dataRetentionSettings
      *     name: 'properties/my-propertie/dataRetentionSettings',
      *     // Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -8819,17 +8990,23 @@ export namespace analyticsadmin_v1alpha {
      */
     name?: string;
   }
+  export interface Params$Resource$Properties$Getuserprovideddatasettings extends StandardParameters {
+    /**
+     * Required. The name of the user provided data settings to retrieve. Format: properties/{property\}/userProvidedDataSettings
+     */
+    name?: string;
+  }
   export interface Params$Resource$Properties$List extends StandardParameters {
     /**
      * Required. An expression for filtering the results of the request. Fields eligible for filtering are: `parent:`(The resource name of the parent account/property) or `ancestor:`(The resource name of the parent account) or `firebase_project:`(The id or number of the linked firebase project). Some examples of filters: ``` | Filter | Description | |-----------------------------|-------------------------------------------| | parent:accounts/123 | The account with account id: 123. | | parent:properties/123 | The property with property id: 123. | | ancestor:accounts/123 | The account with account id: 123. | | firebase_project:project-id | The firebase project with id: project-id. | | firebase_project:123 | The firebase project with number: 123. | ```
      */
     filter?: string;
     /**
-     * The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListProperties` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProperties` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -8839,7 +9016,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Patch extends StandardParameters {
     /**
-     * Output only. Resource name of this property. Format: properties/{property_id\} Example: "properties/1000"
+     * Identifier. Resource name of this property. Format: properties/{property_id\} Example: "properties/1000"
      */
     name?: string;
     /**
@@ -8897,7 +9074,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Updatedataretentionsettings extends StandardParameters {
     /**
-     * Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property\}/dataRetentionSettings
+     * Identifier. Resource name for this DataRetentionSetting resource. Format: properties/{property\}/dataRetentionSettings
      */
     name?: string;
     /**
@@ -13397,7 +13574,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.calculatedMetrics.patch({
-     *     // Output only. Resource name for this CalculatedMetric. Format: 'properties/{property_id\}/calculatedMetrics/{calculated_metric_id\}'
+     *     // Identifier. Resource name for this CalculatedMetric. Format: 'properties/{property_id\}/calculatedMetrics/{calculated_metric_id\}'
      *     name: 'properties/my-propertie/calculatedMetrics/my-calculatedMetric',
      *     // Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -13579,7 +13756,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Calculatedmetrics$Patch extends StandardParameters {
     /**
-     * Output only. Resource name for this CalculatedMetric. Format: 'properties/{property_id\}/calculatedMetrics/{calculated_metric_id\}'
+     * Identifier. Resource name for this CalculatedMetric. Format: 'properties/{property_id\}/calculatedMetrics/{calculated_metric_id\}'
      */
     name?: string;
     /**
@@ -14921,9 +15098,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.conversionEvents.list({
-     *     // The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *     // Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Required. The resource name of the parent property. Example: 'properties/123'
      *     parent: 'properties/my-propertie',
@@ -15074,7 +15251,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.conversionEvents.patch({
-     *     // Output only. Resource name of this conversion event. Format: properties/{property\}/conversionEvents/{conversion_event\}
+     *     // Identifier. Resource name of this conversion event. Format: properties/{property\}/conversionEvents/{conversion_event\}
      *     name: 'properties/my-propertie/conversionEvents/my-conversionEvent',
      *     // Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -15236,11 +15413,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Conversionevents$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListConversionEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConversionEvents` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -15250,7 +15427,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Conversionevents$Patch extends StandardParameters {
     /**
-     * Output only. Resource name of this conversion event. Format: properties/{property\}/conversionEvents/{conversion_event\}
+     * Identifier. Resource name of this conversion event. Format: properties/{property\}/conversionEvents/{conversion_event\}
      */
     name?: string;
     /**
@@ -15765,9 +15942,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.customDimensions.list({
-     *     // The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
+     *     // Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Required. Example format: properties/1234
      *     parent: 'properties/my-propertie',
@@ -15918,7 +16095,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.customDimensions.patch({
-     *     // Output only. Resource name for this CustomDimension resource. Format: properties/{property\}/customDimensions/{customDimension\}
+     *     // Identifier. Resource name for this CustomDimension resource. Format: properties/{property\}/customDimensions/{customDimension\}
      *     name: 'properties/my-propertie/customDimensions/my-customDimension',
      *     // Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -16083,11 +16260,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Customdimensions$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
+     * Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListCustomDimensions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCustomDimensions` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -16097,7 +16274,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Customdimensions$Patch extends StandardParameters {
     /**
-     * Output only. Resource name for this CustomDimension resource. Format: properties/{property\}/customDimensions/{customDimension\}
+     * Identifier. Resource name for this CustomDimension resource. Format: properties/{property\}/customDimensions/{customDimension\}
      */
     name?: string;
     /**
@@ -16768,7 +16945,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.customMetrics.patch({
-     *     // Output only. Resource name for this CustomMetric resource. Format: properties/{property\}/customMetrics/{customMetric\}
+     *     // Identifier. Resource name for this CustomMetric resource. Format: properties/{property\}/customMetrics/{customMetric\}
      *     name: 'properties/my-propertie/customMetrics/my-customMetric',
      *     // Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -16949,7 +17126,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Custommetrics$Patch extends StandardParameters {
     /**
-     * Output only. Resource name for this CustomMetric resource. Format: properties/{property\}/customMetrics/{customMetric\}
+     * Identifier. Resource name for this CustomMetric resource. Format: properties/{property\}/customMetrics/{customMetric\}
      */
     name?: string;
     /**
@@ -18093,7 +18270,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.dataStreams.patch({
-     *     // Output only. Resource name of this Data Stream. Format: properties/{property_id\}/dataStreams/{stream_id\} Example: "properties/1000/dataStreams/2000"
+     *     // Identifier. Resource name of this Data Stream. Format: properties/{property_id\}/dataStreams/{stream_id\} Example: "properties/1000/dataStreams/2000"
      *     name: 'properties/my-propertie/dataStreams/my-dataStream',
      *     // Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -18631,7 +18808,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Datastreams$Patch extends StandardParameters {
     /**
-     * Output only. Resource name of this Data Stream. Format: properties/{property_id\}/dataStreams/{stream_id\} Example: "properties/1000/dataStreams/2000"
+     * Identifier. Resource name of this Data Stream. Format: properties/{property_id\}/dataStreams/{stream_id\} Example: "properties/1000/dataStreams/2000"
      */
     name?: string;
     /**
@@ -21000,9 +21177,9 @@ export namespace analyticsadmin_v1alpha {
      *   const res =
      *     await analyticsadmin.properties.dataStreams.measurementProtocolSecrets.list(
      *       {
-     *         // The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum.
+     *         // Optional. The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum.
      *         pageSize: 'placeholder-value',
-     *         // A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token.
+     *         // Optional. A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token.
      *         pageToken: 'placeholder-value',
      *         // Required. The resource name of the parent stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets
      *         parent: 'properties/my-propertie/dataStreams/my-dataStream',
@@ -21156,7 +21333,7 @@ export namespace analyticsadmin_v1alpha {
      *   const res =
      *     await analyticsadmin.properties.dataStreams.measurementProtocolSecrets.patch(
      *       {
-     *         // Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets/{measurementProtocolSecret\}
+     *         // Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets/{measurementProtocolSecret\}
      *         name: 'properties/my-propertie/dataStreams/my-dataStream/measurementProtocolSecrets/my-measurementProtocolSecret',
      *         // Required. The list of fields to be updated. Omitted fields will not be updated.
      *         updateMask: 'placeholder-value',
@@ -21312,11 +21489,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Datastreams$Measurementprotocolsecrets$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum.
+     * Optional. The maximum number of resources to return. If unspecified, at most 10 resources will be returned. The maximum value is 10. Higher values will be coerced to the maximum.
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListMeasurementProtocolSecrets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMeasurementProtocolSecrets` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -21326,7 +21503,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Datastreams$Measurementprotocolsecrets$Patch extends StandardParameters {
     /**
-     * Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets/{measurementProtocolSecret\}
+     * Identifier. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property\}/dataStreams/{dataStream\}/measurementProtocolSecrets/{measurementProtocolSecret\}
      */
     name?: string;
     /**
@@ -21842,9 +22019,9 @@ export namespace analyticsadmin_v1alpha {
      *   const res =
      *     await analyticsadmin.properties.dataStreams.sKAdNetworkConversionValueSchema.list(
      *       {
-     *         // The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *         // Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *         pageSize: 'placeholder-value',
-     *         // A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.
+     *         // Optional. A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.
      *         pageToken: 'placeholder-value',
      *         // Required. The DataStream resource to list schemas for. Format: properties/{property_id\}/dataStreams/{dataStream\} Example: properties/1234/dataStreams/5678
      *         parent: 'properties/my-propertie/dataStreams/my-dataStream',
@@ -21998,7 +22175,7 @@ export namespace analyticsadmin_v1alpha {
      *   const res =
      *     await analyticsadmin.properties.dataStreams.sKAdNetworkConversionValueSchema.patch(
      *       {
-     *         // Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property\}/dataStreams/{dataStream\}/sKAdNetworkConversionValueSchema
+     *         // Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property\}/dataStreams/{dataStream\}/sKAdNetworkConversionValueSchema
      *         name: 'properties/my-propertie/dataStreams/my-dataStream/sKAdNetworkConversionValueSchema/[^/]+',
      *         // Required. The list of fields to be updated. Omitted fields will not be updated.
      *         updateMask: 'placeholder-value',
@@ -22158,11 +22335,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Datastreams$Skadnetworkconversionvalueschema$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -22172,7 +22349,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Datastreams$Skadnetworkconversionvalueschema$Patch extends StandardParameters {
     /**
-     * Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property\}/dataStreams/{dataStream\}/sKAdNetworkConversionValueSchema
+     * Identifier. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most one such child under an iOS stream. Format: properties/{property\}/dataStreams/{dataStream\}/sKAdNetworkConversionValueSchema
      */
     name?: string;
     /**
@@ -23856,7 +24033,7 @@ export namespace analyticsadmin_v1alpha {
      *   // Do the magic
      *   const res =
      *     await analyticsadmin.properties.displayVideo360AdvertiserLinks.patch({
-     *       // Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinks/{linkId\} Note: linkId is not the Display & Video 360 Advertiser ID
+     *       // Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinks/{linkId\} Note: linkId is not the Display & Video 360 Advertiser ID
      *       name: 'properties/my-propertie/displayVideo360AdvertiserLinks/my-displayVideo360AdvertiserLink',
      *       // Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *       updateMask: 'placeholder-value',
@@ -24031,7 +24208,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Displayvideo360advertiserlinks$Patch extends StandardParameters {
     /**
-     * Output only. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinks/{linkId\} Note: linkId is not the Display & Video 360 Advertiser ID
+     * Identifier. The resource name for this DisplayVideo360AdvertiserLink resource. Format: properties/{propertyId\}/displayVideo360AdvertiserLinks/{linkId\} Note: linkId is not the Display & Video 360 Advertiser ID
      */
     name?: string;
     /**
@@ -25216,9 +25393,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.firebaseLinks.list({
-     *     // The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *     // Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Required. Format: properties/{property_id\} Example: `properties/1234`
      *     parent: 'properties/my-propertie',
@@ -25358,11 +25535,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Firebaselinks$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of resources to return. The service may return fewer than this value, even if there are additional pages. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListFirebaseLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFirebaseLinks` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -25712,9 +25889,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.googleAdsLinks.list({
-     *     // The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
+     *     // Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Required. Example format: properties/1234
      *     parent: 'properties/my-propertie',
@@ -25865,7 +26042,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.googleAdsLinks.patch({
-     *     // Output only. Format: properties/{propertyId\}/googleAdsLinks/{googleAdsLinkId\} Note: googleAdsLinkId is not the Google Ads customer ID.
+     *     // Identifier. Format: properties/{propertyId\}/googleAdsLinks/{googleAdsLinkId\} Note: googleAdsLinkId is not the Google Ads customer ID.
      *     name: 'properties/my-propertie/googleAdsLinks/my-googleAdsLink',
      *     // Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -26021,11 +26198,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Googleadslinks$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
+     * Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200 (higher values will be coerced to the maximum).
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListGoogleAdsLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoogleAdsLinks` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -26035,7 +26212,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Googleadslinks$Patch extends StandardParameters {
     /**
-     * Output only. Format: properties/{propertyId\}/googleAdsLinks/{googleAdsLinkId\} Note: googleAdsLinkId is not the Google Ads customer ID.
+     * Identifier. Format: properties/{propertyId\}/googleAdsLinks/{googleAdsLinkId\} Note: googleAdsLinkId is not the Google Ads customer ID.
      */
     name?: string;
     /**
@@ -26544,9 +26721,9 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.keyEvents.list({
-     *     // The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     *     // Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      *     pageSize: 'placeholder-value',
-     *     // A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token.
+     *     // Optional. A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token.
      *     pageToken: 'placeholder-value',
      *     // Required. The resource name of the parent property. Example: 'properties/123'
      *     parent: 'properties/my-propertie',
@@ -26859,11 +27036,11 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Keyevents$List extends StandardParameters {
     /**
-     * The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
+     * Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be returned. The maximum value is 200; (higher values will be coerced to the maximum)
      */
     pageSize?: number;
     /**
-     * A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token.
+     * Optional. A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that provided the page token.
      */
     pageToken?: string;
     /**
@@ -29022,7 +29199,7 @@ export namespace analyticsadmin_v1alpha {
      *
      *   // Do the magic
      *   const res = await analyticsadmin.properties.searchAds360Links.patch({
-     *     // Output only. The resource name for this SearchAds360Link resource. Format: properties/{propertyId\}/searchAds360Links/{linkId\} Note: linkId is not the Search Ads 360 advertiser ID
+     *     // Identifier. The resource name for this SearchAds360Link resource. Format: properties/{propertyId\}/searchAds360Links/{linkId\} Note: linkId is not the Search Ads 360 advertiser ID
      *     name: 'properties/my-propertie/searchAds360Links/my-searchAds360Link',
      *     // Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields.
      *     updateMask: 'placeholder-value',
@@ -29198,7 +29375,7 @@ export namespace analyticsadmin_v1alpha {
   }
   export interface Params$Resource$Properties$Searchads360links$Patch extends StandardParameters {
     /**
-     * Output only. The resource name for this SearchAds360Link resource. Format: properties/{propertyId\}/searchAds360Links/{linkId\} Note: linkId is not the Search Ads 360 advertiser ID
+     * Identifier. The resource name for this SearchAds360Link resource. Format: properties/{propertyId\}/searchAds360Links/{linkId\} Note: linkId is not the Search Ads 360 advertiser ID
      */
     name?: string;
     /**
