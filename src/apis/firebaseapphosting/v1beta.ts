@@ -660,7 +660,7 @@ export namespace firebaseapphosting_v1beta {
      */
     value?: string | null;
     /**
-     * Required. The name of the environment variable. - Must be a valid environment variable name (e.g. A-Z or underscores). - May not start with "FIREBASE" or "GOOGLE". - May not be a reserved environment variable for KNative/Cloud Run
+     * Required. The name of the environment variable. The environment variables reserved by [Cloud Run](https://docs.cloud.google.com/run/docs/configuring/services/environment-variables#reserved) should not be set. Additionally, variable names cannot start with "X_FIREBASE_".
      */
     variable?: string | null;
   }
@@ -778,6 +778,15 @@ export namespace firebaseapphosting_v1beta {
      * Locations that could not be reached.
      */
     unreachable?: string[] | null;
+  }
+  /**
+   * Response message for a list of supported runtimes.
+   */
+  export interface Schema$ListSupportedRuntimesResponse {
+    /**
+     * The list of supported runtimes.
+     */
+    supportedRuntimes?: Schema$SupportedRuntime[];
   }
   /**
    * A set of updates including ACME challenges and DNS records that allow App Hosting to create an SSL certificate and establish project ownership for your domain name before you direct traffic to App Hosting servers. Use these updates to facilitate zero downtime migrations to App Hosting from other services. After you've made the recommended updates, check your custom domain's `ownershipState` and `certState`. To avoid downtime, they should be `OWNERSHIP_ACTIVE` and `CERT_ACTIVE`, respectively, before you update your `A` and `AAAA` records.
@@ -1078,6 +1087,31 @@ export namespace firebaseapphosting_v1beta {
     message?: string | null;
   }
   /**
+   * Represents a single FAH supported runtime. Although instances of this resource are parented by a project and location, the set of available runtimes may vary across projects and locations, for example, during staged rollouts of new runtime support.
+   */
+  export interface Schema$SupportedRuntime {
+    /**
+     * Output only. True if Automatic Base Image Updates (ABIU) is supported for this runtime.
+     */
+    automaticBaseImageUpdatesSupported?: boolean | null;
+    /**
+     * Output only. The time at which this runtime will be decommissioned. After this date, the runtime can no longer be used for new builds.
+     */
+    decommissionTime?: string | null;
+    /**
+     * Output only. The time at which this runtime will effectively be deprecated. After this date, the runtime is still usable but may not receive new features or updates.
+     */
+    deprecateTime?: string | null;
+    /**
+     * Identifier. The resource name of the supported runtime. Format: projects/{project\}/locations/{location\}/supportedRuntimes/{runtime_id\}
+     */
+    name?: string | null;
+    /**
+     * Output only. The identifier of the runtime, e.g., "nodejs22".
+     */
+    runtimeId?: string | null;
+  }
+  /**
    * Controls traffic configuration for the backend.
    */
   export interface Schema$Traffic {
@@ -1179,12 +1213,15 @@ export namespace firebaseapphosting_v1beta {
     context: APIRequestContext;
     backends: Resource$Projects$Locations$Backends;
     operations: Resource$Projects$Locations$Operations;
+    supportedRuntimes: Resource$Projects$Locations$Supportedruntimes;
     constructor(context: APIRequestContext) {
       this.context = context;
       this.backends = new Resource$Projects$Locations$Backends(this.context);
       this.operations = new Resource$Projects$Locations$Operations(
         this.context
       );
+      this.supportedRuntimes =
+        new Resource$Projects$Locations$Supportedruntimes(this.context);
     }
 
     /**
@@ -1327,7 +1364,7 @@ export namespace firebaseapphosting_v1beta {
     }
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id\}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project\}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @example
      * ```js
      * // Before running the sample:
@@ -1357,7 +1394,7 @@ export namespace firebaseapphosting_v1beta {
      *
      *   // Do the magic
      *   const res = await firebaseapphosting.projects.locations.list({
-     *     // Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     *     // Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      *     extraLocationTypes: 'placeholder-value',
      *     // A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      *     filter: 'placeholder-value',
@@ -1484,7 +1521,7 @@ export namespace firebaseapphosting_v1beta {
   }
   export interface Params$Resource$Projects$Locations$List extends StandardParameters {
     /**
-     * Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      */
     extraLocationTypes?: string[];
     /**
@@ -5528,5 +5565,171 @@ export namespace firebaseapphosting_v1beta {
      * When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
      */
     returnPartialSuccess?: boolean;
+  }
+
+  export class Resource$Projects$Locations$Supportedruntimes {
+    context: APIRequestContext;
+    constructor(context: APIRequestContext) {
+      this.context = context;
+    }
+
+    /**
+     * Lists the runtimes supported by the backend. The list of runtimes may vary across projects and locations, for example, during staged rollouts of new runtime support.
+     * @example
+     * ```js
+     * // Before running the sample:
+     * // - Enable the API at:
+     * //   https://console.developers.google.com/apis/api/firebaseapphosting.googleapis.com
+     * // - Login into gcloud by running:
+     * //   ```sh
+     * //   $ gcloud auth application-default login
+     * //   ```
+     * // - Install the npm module by running:
+     * //   ```sh
+     * //   $ npm install googleapis
+     * //   ```
+     *
+     * const {google} = require('googleapis');
+     * const firebaseapphosting = google.firebaseapphosting('v1beta');
+     *
+     * async function main() {
+     *   const auth = new google.auth.GoogleAuth({
+     *     // Scopes can be specified either as an array or as a single, space-delimited string.
+     *     scopes: ['https://www.googleapis.com/auth/cloud-platform'],
+     *   });
+     *
+     *   // Acquire an auth client, and bind it to all future calls
+     *   const authClient = await auth.getClient();
+     *   google.options({auth: authClient});
+     *
+     *   // Do the magic
+     *   const res =
+     *     await firebaseapphosting.projects.locations.supportedRuntimes.list({
+     *       // Optional. The suggested number of runtimes to return. This field is ignored. We return all runtimes in a single page regardless of the page size.
+     *       pageSize: 'placeholder-value',
+     *       // Required. The parent, which owns this collection of SupportedRuntime. Format: projects/{project\}/locations/{location\}
+     *       parent: 'projects/my-project/locations/my-location',
+     *     });
+     *   console.log(res.data);
+     *
+     *   // Example response
+     *   // {
+     *   //   "supportedRuntimes": []
+     *   // }
+     * }
+     *
+     * main().catch(e => {
+     *   console.error(e);
+     *   throw e;
+     * });
+     *
+     * ```
+     *
+     * @param params - Parameters for request
+     * @param options - Optionally override request options, such as `url`, `method`, and `encoding`.
+     * @param callback - Optional callback that handles the response.
+     * @returns A promise if used with async/await, or void if used with a callback.
+     */
+    list(
+      params: Params$Resource$Projects$Locations$Supportedruntimes$List,
+      options: StreamMethodOptions
+    ): Promise<GaxiosResponseWithHTTP2<Readable>>;
+    list(
+      params?: Params$Resource$Projects$Locations$Supportedruntimes$List,
+      options?: MethodOptions
+    ): Promise<GaxiosResponseWithHTTP2<Schema$ListSupportedRuntimesResponse>>;
+    list(
+      params: Params$Resource$Projects$Locations$Supportedruntimes$List,
+      options: StreamMethodOptions | BodyResponseCallback<Readable>,
+      callback: BodyResponseCallback<Readable>
+    ): void;
+    list(
+      params: Params$Resource$Projects$Locations$Supportedruntimes$List,
+      options:
+        | MethodOptions
+        | BodyResponseCallback<Schema$ListSupportedRuntimesResponse>,
+      callback: BodyResponseCallback<Schema$ListSupportedRuntimesResponse>
+    ): void;
+    list(
+      params: Params$Resource$Projects$Locations$Supportedruntimes$List,
+      callback: BodyResponseCallback<Schema$ListSupportedRuntimesResponse>
+    ): void;
+    list(
+      callback: BodyResponseCallback<Schema$ListSupportedRuntimesResponse>
+    ): void;
+    list(
+      paramsOrCallback?:
+        | Params$Resource$Projects$Locations$Supportedruntimes$List
+        | BodyResponseCallback<Schema$ListSupportedRuntimesResponse>
+        | BodyResponseCallback<Readable>,
+      optionsOrCallback?:
+        | MethodOptions
+        | StreamMethodOptions
+        | BodyResponseCallback<Schema$ListSupportedRuntimesResponse>
+        | BodyResponseCallback<Readable>,
+      callback?:
+        | BodyResponseCallback<Schema$ListSupportedRuntimesResponse>
+        | BodyResponseCallback<Readable>
+    ):
+      | void
+      | Promise<GaxiosResponseWithHTTP2<Schema$ListSupportedRuntimesResponse>>
+      | Promise<GaxiosResponseWithHTTP2<Readable>> {
+      let params = (paramsOrCallback ||
+        {}) as Params$Resource$Projects$Locations$Supportedruntimes$List;
+      let options = (optionsOrCallback || {}) as MethodOptions;
+
+      if (typeof paramsOrCallback === 'function') {
+        callback = paramsOrCallback;
+        params =
+          {} as Params$Resource$Projects$Locations$Supportedruntimes$List;
+        options = {};
+      }
+
+      if (typeof optionsOrCallback === 'function') {
+        callback = optionsOrCallback;
+        options = {};
+      }
+
+      const rootUrl =
+        options.rootUrl || 'https://firebaseapphosting.googleapis.com/';
+      const parameters = {
+        options: Object.assign(
+          {
+            url: (rootUrl + '/v1beta/{+parent}/supportedRuntimes').replace(
+              /([^:]\/)\/+/g,
+              '$1'
+            ),
+            method: 'GET',
+            apiVersion: '',
+          },
+          options
+        ),
+        params,
+        requiredParams: ['parent'],
+        pathParams: ['parent'],
+        context: this.context,
+      };
+      if (callback) {
+        createAPIRequest<Schema$ListSupportedRuntimesResponse>(
+          parameters,
+          callback as BodyResponseCallback<unknown>
+        );
+      } else {
+        return createAPIRequest<Schema$ListSupportedRuntimesResponse>(
+          parameters
+        );
+      }
+    }
+  }
+
+  export interface Params$Resource$Projects$Locations$Supportedruntimes$List extends StandardParameters {
+    /**
+     * Optional. The suggested number of runtimes to return. This field is ignored. We return all runtimes in a single page regardless of the page size.
+     */
+    pageSize?: number;
+    /**
+     * Required. The parent, which owns this collection of SupportedRuntime. Format: projects/{project\}/locations/{location\}
+     */
+    parent?: string;
   }
 }
