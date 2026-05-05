@@ -442,15 +442,15 @@ export namespace iap_v1 {
    */
   export interface Schema$OAuthSettings {
     /**
-     * Optional. OAuth 2.0 client ID used in the OAuth flow to generate an access token. If this field is set, you can skip obtaining the OAuth credentials in this step: https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-oauth-2.0-credentials-from-the-google-api-console. However, this could allow for client sharing. The risks of client sharing are outlined here: https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
+     * Optional. OAuth 2.0 client ID used in the OAuth flow. This allows for client sharing. The risks of client sharing are outlined here: https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
      */
     clientId?: string | null;
     /**
-     * Optional. Input only. OAuth secret paired with client ID
+     * Optional. Input only. OAuth secret paired with client ID.
      */
     clientSecret?: string | null;
     /**
-     * Output only. OAuth secret sha256 paired with client ID
+     * Output only. OAuth secret SHA256 paired with client ID.
      */
     clientSecretSha256?: string | null;
     /**
@@ -548,7 +548,7 @@ export namespace iap_v1 {
      */
     labels?: {[key: string]: string} | null;
     /**
-     * The locations of the resource. This field is used to determine whether the request is compliant with Trust Boundaries. Usage: - Must not be empty for services in-scope for Trust Boundaries. Once Trust Boundaries is GA, empty values will cause the request to be rejected if customers enforce Trust Boundaries on the parent CRM nodes. - For global resources: use a single value of "global". - For regional/multi-regional resources: use name of the GCP region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For multi-regional resources specify the name of each GCP region in the resource's multi-region. NOTE: Only GCP cloud region names are supported - go/cloud-region-names.
+     * The locations of the resource. This field is used to determine whether the request is compliant with Trust Boundaries. Usage: - Must not be empty for services in-scope for Trust Boundaries. Once Trust Boundaries is GA, empty values will cause the request to be rejected if customers enforce Trust Boundaries on the parent CRM nodes. - For global resources: use a single value of "global". - For regional/multi-regional resources: use name of the GCP region(s) where the resource exists (e.g., ["us-east1", "us-west1"]). For multi-regional resources specify the name of each GCP region in the resource's multi-region. NOTE: Only GCP cloud region names are supported - go/cloud-region-names. - Constraints: - Individual location strings must be less than 1000 bytes. - The cumulative size of all locations must be less than 16KB.
      */
     locations?: string[] | null;
     /**
