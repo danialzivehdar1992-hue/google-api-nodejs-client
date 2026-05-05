@@ -261,6 +261,10 @@ export namespace firebaseappcheck_v1 {
      */
     displayName?: string | null;
     /**
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly validated as defined by RFC 7232.
+     */
+    etag?: string | null;
+    /**
      * Required. The relative resource name of the debug token, in the format: ``` projects/{project_number\}/apps/{app_id\}/debugTokens/{debug_token_id\} ```
      */
     name?: string | null;
@@ -705,9 +709,21 @@ export namespace firebaseappcheck_v1 {
      */
     enforcementMode?: string | null;
     /**
+     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly validated as defined by RFC 7232.
+     */
+    etag?: string | null;
+    /**
      * Required. The relative resource name of the service configuration object, in the format: ``` projects/{project_number\}/services/{service_id\} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com` (Google Identity for iOS)
      */
     name?: string | null;
+    /**
+     * Optional. The replay protection enforcement mode for this service. Note that this field cannot be set to a level higher than the overall App Check enforcement mode. For example, if the overall App Check enforcement mode is set to `UNENFORCED`, this field cannot be set to `ENFORCED`. In order to enforce replay protection, you must first enforce App Check. An HTTP 400 error will be returned in this case. By default, this field is set to `OFF`. Setting this field to `UNENFORCED` or `ENFORCED` is considered opting into replay protection. Once opted in, requests to your protected services may experience higher latency. To opt out of replay protection after opting in, set this field to `OFF`.
+     */
+    replayProtection?: string | null;
+    /**
+     * Output only. Timestamp when this service configuration object was most recently updated.
+     */
+    updateTime?: string | null;
   }
   /**
    * Request message for the UpdateResourcePolicy method as well as an individual update message for the BatchUpdateResourcePolicies method.
@@ -4085,6 +4101,7 @@ export namespace firebaseappcheck_v1 {
      *       // request body parameters
      *       // {
      *       //   "displayName": "my_displayName",
+     *       //   "etag": "my_etag",
      *       //   "name": "my_name",
      *       //   "token": "my_token",
      *       //   "updateTime": "my_updateTime"
@@ -4096,6 +4113,7 @@ export namespace firebaseappcheck_v1 {
      *   // Example response
      *   // {
      *   //   "displayName": "my_displayName",
+     *   //   "etag": "my_etag",
      *   //   "name": "my_name",
      *   //   "token": "my_token",
      *   //   "updateTime": "my_updateTime"
@@ -4242,6 +4260,8 @@ export namespace firebaseappcheck_v1 {
      *
      *   // Do the magic
      *   const res = await firebaseappcheck.projects.apps.debugTokens.delete({
+     *     // Optional. The checksum to be validated against the current DebugToken, to ensure the client has an up-to-date value before proceeding. This checksum is computed by the server based on the values of fields in the DebugToken object, and can be obtained from the DebugToken object received from the last CreateDebugToken, GetDebugToken, ListDebugTokens, or UpdateDebugToken call. This etag is strongly validated as defined by RFC 7232.
+     *     etag: 'placeholder-value',
      *     // Required. The relative resource name of the DebugToken to delete, in the format: ``` projects/{project_number\}/apps/{app_id\}/debugTokens/{debug_token_id\} ```
      *     name: 'projects/my-project/apps/my-app/debugTokens/my-debugToken',
      *   });
@@ -4386,6 +4406,7 @@ export namespace firebaseappcheck_v1 {
      *   // Example response
      *   // {
      *   //   "displayName": "my_displayName",
+     *   //   "etag": "my_etag",
      *   //   "name": "my_name",
      *   //   "token": "my_token",
      *   //   "updateTime": "my_updateTime"
@@ -4695,6 +4716,7 @@ export namespace firebaseappcheck_v1 {
      *       // request body parameters
      *       // {
      *       //   "displayName": "my_displayName",
+     *       //   "etag": "my_etag",
      *       //   "name": "my_name",
      *       //   "token": "my_token",
      *       //   "updateTime": "my_updateTime"
@@ -4706,6 +4728,7 @@ export namespace firebaseappcheck_v1 {
      *   // Example response
      *   // {
      *   //   "displayName": "my_displayName",
+     *   //   "etag": "my_etag",
      *   //   "name": "my_name",
      *   //   "token": "my_token",
      *   //   "updateTime": "my_updateTime"
@@ -4828,6 +4851,10 @@ export namespace firebaseappcheck_v1 {
     requestBody?: Schema$GoogleFirebaseAppcheckV1DebugToken;
   }
   export interface Params$Resource$Projects$Apps$Debugtokens$Delete extends StandardParameters {
+    /**
+     * Optional. The checksum to be validated against the current DebugToken, to ensure the client has an up-to-date value before proceeding. This checksum is computed by the server based on the values of fields in the DebugToken object, and can be obtained from the DebugToken object received from the last CreateDebugToken, GetDebugToken, ListDebugTokens, or UpdateDebugToken call. This etag is strongly validated as defined by RFC 7232.
+     */
+    etag?: string;
     /**
      * Required. The relative resource name of the DebugToken to delete, in the format: ``` projects/{project_number\}/apps/{app_id\}/debugTokens/{debug_token_id\} ```
      */
@@ -7624,7 +7651,10 @@ export namespace firebaseappcheck_v1 {
      *   // Example response
      *   // {
      *   //   "enforcementMode": "my_enforcementMode",
-     *   //   "name": "my_name"
+     *   //   "etag": "my_etag",
+     *   //   "name": "my_name",
+     *   //   "replayProtection": "my_replayProtection",
+     *   //   "updateTime": "my_updateTime"
      *   // }
      * }
      *
@@ -7927,7 +7957,10 @@ export namespace firebaseappcheck_v1 {
      *       // request body parameters
      *       // {
      *       //   "enforcementMode": "my_enforcementMode",
-     *       //   "name": "my_name"
+     *       //   "etag": "my_etag",
+     *       //   "name": "my_name",
+     *       //   "replayProtection": "my_replayProtection",
+     *       //   "updateTime": "my_updateTime"
      *       // }
      *     },
      *   });
@@ -7936,7 +7969,10 @@ export namespace firebaseappcheck_v1 {
      *   // Example response
      *   // {
      *   //   "enforcementMode": "my_enforcementMode",
-     *   //   "name": "my_name"
+     *   //   "etag": "my_etag",
+     *   //   "name": "my_name",
+     *   //   "replayProtection": "my_replayProtection",
+     *   //   "updateTime": "my_updateTime"
      *   // }
      * }
      *
