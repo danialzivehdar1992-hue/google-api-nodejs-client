@@ -195,6 +195,10 @@ export namespace classroom_v1 {
      * Submission state of add-on attachment's parent post (i.e. assignment).
      */
     postSubmissionState?: string | null;
+    /**
+     * Identifier for the student that owns this submission. Requires the user to be a teacher in the course and have permission to read student submissions. Read-only.
+     */
+    userId?: string | null;
   }
   /**
    * Attachment-relevant metadata for Classroom add-ons in the context of a specific post.
@@ -2416,15 +2420,15 @@ export namespace classroom_v1 {
      *
      *   // Do the magic
      *   const res = await classroom.courses.list({
-     *     // Restricts returned courses to those in one of the specified states The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
+     *     // Restricts returned courses to those in one of the specified states. If unspecified, Courses in any state are returned.
      *     courseStates: 'placeholder-value',
      *     // Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
      *     pageSize: 'placeholder-value',
      *     // nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
      *     pageToken: 'placeholder-value',
-     *     // Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     *     // Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `teacher_id` must be empty.
      *     studentId: 'placeholder-value',
-     *     // Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     *     // Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `student_id` must be empty.
      *     teacherId: 'placeholder-value',
      *   });
      *   console.log(res.data);
@@ -3066,7 +3070,7 @@ export namespace classroom_v1 {
   }
   export interface Params$Resource$Courses$List extends StandardParameters {
     /**
-     * Restricts returned courses to those in one of the specified states The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
+     * Restricts returned courses to those in one of the specified states. If unspecified, Courses in any state are returned.
      */
     courseStates?: string[];
     /**
@@ -3078,11 +3082,11 @@ export namespace classroom_v1 {
      */
     pageToken?: string;
     /**
-     * Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `teacher_id` must be empty.
      */
     studentId?: string;
     /**
-     * Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user If specified, `student_id` must be empty.
      */
     teacherId?: string;
   }
@@ -8195,7 +8199,8 @@ export namespace classroom_v1 {
      *   // Example response
      *   // {
      *   //   "pointsEarned": {},
-     *   //   "postSubmissionState": "my_postSubmissionState"
+     *   //   "postSubmissionState": "my_postSubmissionState",
+     *   //   "userId": "my_userId"
      *   // }
      * }
      *
@@ -8356,7 +8361,8 @@ export namespace classroom_v1 {
      *           // request body parameters
      *           // {
      *           //   "pointsEarned": {},
-     *           //   "postSubmissionState": "my_postSubmissionState"
+     *           //   "postSubmissionState": "my_postSubmissionState",
+     *           //   "userId": "my_userId"
      *           // }
      *         },
      *       },
@@ -8366,7 +8372,8 @@ export namespace classroom_v1 {
      *   // Example response
      *   // {
      *   //   "pointsEarned": {},
-     *   //   "postSubmissionState": "my_postSubmissionState"
+     *   //   "postSubmissionState": "my_postSubmissionState",
+     *   //   "userId": "my_userId"
      *   // }
      * }
      *
@@ -13820,7 +13827,8 @@ export namespace classroom_v1 {
      *   // Example response
      *   // {
      *   //   "pointsEarned": {},
-     *   //   "postSubmissionState": "my_postSubmissionState"
+     *   //   "postSubmissionState": "my_postSubmissionState",
+     *   //   "userId": "my_userId"
      *   // }
      * }
      *
@@ -13980,7 +13988,8 @@ export namespace classroom_v1 {
      *         // request body parameters
      *         // {
      *         //   "pointsEarned": {},
-     *         //   "postSubmissionState": "my_postSubmissionState"
+     *         //   "postSubmissionState": "my_postSubmissionState",
+     *         //   "userId": "my_userId"
      *         // }
      *       },
      *     });
@@ -13989,7 +13998,8 @@ export namespace classroom_v1 {
      *   // Example response
      *   // {
      *   //   "pointsEarned": {},
-     *   //   "postSubmissionState": "my_postSubmissionState"
+     *   //   "postSubmissionState": "my_postSubmissionState",
+     *   //   "userId": "my_userId"
      *   // }
      * }
      *
