@@ -233,11 +233,19 @@ export namespace youtubereporting_v1 {
     /**
      * gdata
      */
+    fromFusionId?: string | null;
+    /**
+     * gdata
+     */
     fromHeader?: string | null;
     /**
      * gdata
      */
     fromUrlPath?: string | null;
+    /**
+     * gdata
+     */
+    fusionIdDetectionMetadata?: string | null;
   }
   /**
    * gdata
