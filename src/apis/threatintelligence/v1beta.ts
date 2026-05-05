@@ -235,7 +235,7 @@ export namespace threatintelligence_v1beta {
      */
     content?: string | null;
     /**
-     * Output only. The time the document was created.
+     * Output only. The timestamp of the original external publication of the document.
      */
     createTime?: string | null;
     /**
@@ -665,7 +665,7 @@ export namespace threatintelligence_v1beta {
      */
     discoveryDocumentIds?: string[] | null;
     /**
-     * Required. Data Leak specific severity This will be the string representation of the DataLeakFindingDetail.Severityenum. (e.g., "LOW", "MEDIUM", "HIGH", "CRITICAL")
+     * Required. The severity of the Data Leak alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL`
      */
     severity?: string | null;
   }
@@ -846,7 +846,7 @@ export namespace threatintelligence_v1beta {
      */
     discoveryDocumentIds?: string[] | null;
     /**
-     * Required. IAB specific severity
+     * Required. The severity of the Initial Access Broker (IAB) alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL`
      */
     severity?: string | null;
   }
@@ -876,7 +876,7 @@ export namespace threatintelligence_v1beta {
      */
     discoveryDocumentIds?: string[] | null;
     /**
-     * Required. InsiderThreat specific severity This will be the string representation of the InsiderThreatFindingDetail.Severityenum. (e.g., "LOW", "MEDIUM", "HIGH", "CRITICAL")
+     * Required. The severity of the Insider Threat alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL`
      */
     severity?: string | null;
   }
@@ -2263,13 +2263,13 @@ export namespace threatintelligence_v1beta {
      *
      *   // Do the magic
      *   const res = await threatintelligence.projects.alerts.list({
-     *     // Optional. Filter criteria.
+     *     // Optional. Filter criteria. Supported fields for filtering include: * `audit.create_time` * `audit.creator` * `audit.update_time` * `audit.updater` * `detail.data_leak.discovery_document_ids` * `detail.data_leak.severity` * `detail.detail_type` * `detail.initial_access_broker.discovery_document_ids` * `detail.initial_access_broker.severity` * `detail.insider_threat.discovery_document_ids` * `detail.insider_threat.severity` * `finding_count` * `priority_analysis.priority_level` * `relevance_analysis.confidence` * `relevance_analysis.relevance_level` * `relevance_analysis.relevant` * `severity_analysis.severity_level` * `state` Examples: * `detail.detail_type = "initial_access_broker"` * `detail.detail_type != "data_leak"` * `detail.insider_threat.severity = "HIGH"` * `audit.create_time \>= "2026-04-03T00:00:00Z" AND audit.create_time < "2026-04-06T00:00:00Z"` * `state = "NEW" OR state = "TRIAGED"` * `severity_analysis.severity_level = "SEVERITY_LEVEL_CRITICAL"`
      *     filter: 'placeholder-value',
-     *     // Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
+     *     // Optional. Order by criteria in the csv format: "field1, field2 desc" or "field1, field2" or "field1 asc, field2". If a field is specified without `asc` or `desc`, ascending order is used by default. Supported fields for ordering are identical to those supported for filtering. Examples: * `audit.create_time desc` * `audit.update_time asc` * `audit.create_time desc, severity_analysis.severity_level desc`
      *     orderBy: 'placeholder-value',
-     *     // Optional. Page size.
+     *     // Optional. Page size. Default to 100 alerts per page. Maximum is 1000 alerts per page.
      *     pageSize: 'placeholder-value',
-     *     // Optional. Page token.
+     *     // Optional. Page token to retrieve the next page of results.
      *     pageToken: 'placeholder-value',
      *     // Required. Parent of the alerts. Format: projects/{project\}
      *     parent: 'projects/my-project',
@@ -3237,19 +3237,19 @@ export namespace threatintelligence_v1beta {
   }
   export interface Params$Resource$Projects$Alerts$List extends StandardParameters {
     /**
-     * Optional. Filter criteria.
+     * Optional. Filter criteria. Supported fields for filtering include: * `audit.create_time` * `audit.creator` * `audit.update_time` * `audit.updater` * `detail.data_leak.discovery_document_ids` * `detail.data_leak.severity` * `detail.detail_type` * `detail.initial_access_broker.discovery_document_ids` * `detail.initial_access_broker.severity` * `detail.insider_threat.discovery_document_ids` * `detail.insider_threat.severity` * `finding_count` * `priority_analysis.priority_level` * `relevance_analysis.confidence` * `relevance_analysis.relevance_level` * `relevance_analysis.relevant` * `severity_analysis.severity_level` * `state` Examples: * `detail.detail_type = "initial_access_broker"` * `detail.detail_type != "data_leak"` * `detail.insider_threat.severity = "HIGH"` * `audit.create_time \>= "2026-04-03T00:00:00Z" AND audit.create_time < "2026-04-06T00:00:00Z"` * `state = "NEW" OR state = "TRIAGED"` * `severity_analysis.severity_level = "SEVERITY_LEVEL_CRITICAL"`
      */
     filter?: string;
     /**
-     * Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
+     * Optional. Order by criteria in the csv format: "field1, field2 desc" or "field1, field2" or "field1 asc, field2". If a field is specified without `asc` or `desc`, ascending order is used by default. Supported fields for ordering are identical to those supported for filtering. Examples: * `audit.create_time desc` * `audit.update_time asc` * `audit.create_time desc, severity_analysis.severity_level desc`
      */
     orderBy?: string;
     /**
-     * Optional. Page size.
+     * Optional. Page size. Default to 100 alerts per page. Maximum is 1000 alerts per page.
      */
     pageSize?: number;
     /**
-     * Optional. Page token.
+     * Optional. Page token to retrieve the next page of results.
      */
     pageToken?: string;
     /**
