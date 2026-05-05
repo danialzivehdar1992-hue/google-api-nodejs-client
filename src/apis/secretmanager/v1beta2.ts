@@ -383,13 +383,17 @@ export namespace secretmanager_v1beta2 {
      */
     apiVersion?: string | null;
     /**
-     * Output only. The time the operation was created.
+     * Output only. Time the operation was created.
      */
     createTime?: string | null;
     /**
-     * Output only. The time the operation finished running.
+     * Output only. Time the operation finished running.
      */
     endTime?: string | null;
+    /**
+     * Output only. Represents the progress of the operation. This field is populated for operations that involve processing multiple secret versions.
+     */
+    progress?: Schema$Progress;
     /**
      * Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      */
@@ -427,6 +431,23 @@ export namespace secretmanager_v1beta2 {
      * Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
      */
     version?: number | null;
+  }
+  /**
+   * Represents progress information for operations involving multiple secret versions.
+   */
+  export interface Schema$Progress {
+    /**
+     * Output only. Number of secret versions that have been successfully processed so far.
+     */
+    completedVersionCount?: number | null;
+    /**
+     * Output only. Number of secret versions that failed to process.
+     */
+    failedVersionCount?: number | null;
+    /**
+     * Output only. Provides the total number of secret versions to be processed by the operation.
+     */
+    totalVersionCount?: number | null;
   }
   /**
    * Represents a Replica for this Secret.
@@ -843,7 +864,7 @@ export namespace secretmanager_v1beta2 {
     }
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id\}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project\}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @example
      * ```js
      * // Before running the sample:
@@ -873,7 +894,7 @@ export namespace secretmanager_v1beta2 {
      *
      *   // Do the magic
      *   const res = await secretmanager.projects.locations.list({
-     *     // Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     *     // Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      *     extraLocationTypes: 'placeholder-value',
      *     // A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      *     filter: 'placeholder-value',
@@ -1000,7 +1021,7 @@ export namespace secretmanager_v1beta2 {
   }
   export interface Params$Resource$Projects$Locations$List extends StandardParameters {
     /**
-     * Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      */
     extraLocationTypes?: string[];
     /**
