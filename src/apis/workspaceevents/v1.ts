@@ -446,6 +446,10 @@ export namespace workspaceevents_v1 {
      */
     reconciling?: boolean | null;
     /**
+     * Output only. The service account that was used to authorize the creation of the subscription. This service account must be owned by the same Google Cloud project where you created this subscription. Format: `projects/{project_id\}/serviceAccounts/{service_account_id\}`
+     */
+    serviceAccountAuthority?: string | null;
+    /**
      * Output only. The state of the subscription. Determines whether the subscription can receive events and deliver them to the notification endpoint.
      */
     state?: string | null;
@@ -469,6 +473,10 @@ export namespace workspaceevents_v1 {
      * Output only. The last time that the subscription is updated.
      */
     updateTime?: string | null;
+    /**
+     * Output only. The user who authorized the creation of the subscription. The user must be able to view the `target_resource`. For Google Workspace users, the `{user\}` value is the [`user.id`](https://developers.google.com/workspace/admin/directory/reference/rest/v1/users#User.FIELDS.id) field from the Directory API. Format: `users/{user\}`
+     */
+    userAuthority?: string | null;
   }
   /**
    * Task is the core unit of action for A2A. It has a current status and when results are created for the task they are stored in the artifact. If there are multiple turns for a task, these are stored in history.
@@ -778,6 +786,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
@@ -916,7 +926,7 @@ export namespace workspaceevents_v1 {
     }
 
     /**
-     * Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval ([Developer Preview](https://developers.google.com/workspace/preview)). To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+     * Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
      * @example
      * ```js
      * // Before running the sample:
@@ -939,8 +949,10 @@ export namespace workspaceevents_v1 {
      *     // Scopes can be specified either as an array or as a single, space-delimited string.
      *     scopes: [
      *       'https://www.googleapis.com/auth/chat.app.memberships',
+     *       'https://www.googleapis.com/auth/chat.app.memberships.readonly',
      *       'https://www.googleapis.com/auth/chat.app.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.app.spaces',
+     *       'https://www.googleapis.com/auth/chat.app.spaces.readonly',
      *       'https://www.googleapis.com/auth/chat.memberships',
      *       'https://www.googleapis.com/auth/chat.memberships.readonly',
      *       'https://www.googleapis.com/auth/chat.messages',
@@ -949,6 +961,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
@@ -981,12 +995,14 @@ export namespace workspaceevents_v1 {
      *       //   "notificationEndpoint": {},
      *       //   "payloadOptions": {},
      *       //   "reconciling": false,
+     *       //   "serviceAccountAuthority": "my_serviceAccountAuthority",
      *       //   "state": "my_state",
      *       //   "suspensionReason": "my_suspensionReason",
      *       //   "targetResource": "my_targetResource",
      *       //   "ttl": "my_ttl",
      *       //   "uid": "my_uid",
-     *       //   "updateTime": "my_updateTime"
+     *       //   "updateTime": "my_updateTime",
+     *       //   "userAuthority": "my_userAuthority"
      *       // }
      *     },
      *   });
@@ -1127,6 +1143,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
@@ -1289,6 +1307,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
@@ -1321,12 +1341,14 @@ export namespace workspaceevents_v1 {
      *   //   "notificationEndpoint": {},
      *   //   "payloadOptions": {},
      *   //   "reconciling": false,
+     *   //   "serviceAccountAuthority": "my_serviceAccountAuthority",
      *   //   "state": "my_state",
      *   //   "suspensionReason": "my_suspensionReason",
      *   //   "targetResource": "my_targetResource",
      *   //   "ttl": "my_ttl",
      *   //   "uid": "my_uid",
-     *   //   "updateTime": "my_updateTime"
+     *   //   "updateTime": "my_updateTime",
+     *   //   "userAuthority": "my_userAuthority"
      *   // }
      * }
      *
@@ -1455,6 +1477,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
@@ -1585,7 +1609,7 @@ export namespace workspaceevents_v1 {
     }
 
     /**
-     * Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` andgetting one-time administrator approval ([Developer Preview](https://developers.google.com/workspace/preview)). To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+     * Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
      * @example
      * ```js
      * // Before running the sample:
@@ -1608,8 +1632,10 @@ export namespace workspaceevents_v1 {
      *     // Scopes can be specified either as an array or as a single, space-delimited string.
      *     scopes: [
      *       'https://www.googleapis.com/auth/chat.app.memberships',
+     *       'https://www.googleapis.com/auth/chat.app.memberships.readonly',
      *       'https://www.googleapis.com/auth/chat.app.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.app.spaces',
+     *       'https://www.googleapis.com/auth/chat.app.spaces.readonly',
      *       'https://www.googleapis.com/auth/chat.memberships',
      *       'https://www.googleapis.com/auth/chat.memberships.readonly',
      *       'https://www.googleapis.com/auth/chat.messages',
@@ -1618,6 +1644,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
@@ -1654,12 +1682,14 @@ export namespace workspaceevents_v1 {
      *       //   "notificationEndpoint": {},
      *       //   "payloadOptions": {},
      *       //   "reconciling": false,
+     *       //   "serviceAccountAuthority": "my_serviceAccountAuthority",
      *       //   "state": "my_state",
      *       //   "suspensionReason": "my_suspensionReason",
      *       //   "targetResource": "my_targetResource",
      *       //   "ttl": "my_ttl",
      *       //   "uid": "my_uid",
-     *       //   "updateTime": "my_updateTime"
+     *       //   "updateTime": "my_updateTime",
+     *       //   "userAuthority": "my_userAuthority"
      *       // }
      *     },
      *   });
@@ -1769,7 +1799,7 @@ export namespace workspaceevents_v1 {
     }
 
     /**
-     * Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` andgetting one-time administrator approval ([Developer Preview](https://developers.google.com/workspace/preview)). To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+     * Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
      * @example
      * ```js
      * // Before running the sample:
@@ -1792,8 +1822,10 @@ export namespace workspaceevents_v1 {
      *     // Scopes can be specified either as an array or as a single, space-delimited string.
      *     scopes: [
      *       'https://www.googleapis.com/auth/chat.app.memberships',
+     *       'https://www.googleapis.com/auth/chat.app.memberships.readonly',
      *       'https://www.googleapis.com/auth/chat.app.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.app.spaces',
+     *       'https://www.googleapis.com/auth/chat.app.spaces.readonly',
      *       'https://www.googleapis.com/auth/chat.memberships',
      *       'https://www.googleapis.com/auth/chat.memberships.readonly',
      *       'https://www.googleapis.com/auth/chat.messages',
@@ -1802,6 +1834,8 @@ export namespace workspaceevents_v1 {
      *       'https://www.googleapis.com/auth/chat.messages.readonly',
      *       'https://www.googleapis.com/auth/chat.spaces',
      *       'https://www.googleapis.com/auth/chat.spaces.readonly',
+     *       'https://www.googleapis.com/auth/chat.users.readstate',
+     *       'https://www.googleapis.com/auth/chat.users.readstate.readonly',
      *       'https://www.googleapis.com/auth/drive',
      *       'https://www.googleapis.com/auth/drive.file',
      *       'https://www.googleapis.com/auth/drive.metadata',
